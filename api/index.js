@@ -19,3 +19,14 @@ app.listen(3000,()=>{
 
 app.use("/api/user",userRouter) //this is the path to the user route file we created in the last step (api/routes/user.route.js)
 app.use("/api/auth",authRouter) 
+app.use((err,req,res,next)=>{
+   const statusCode=err.message.statusCode || 500;
+   const message=err.message|| "Internal Server Error";
+   return res.status(statusCode).json({
+    success:false, 
+    statusCode,  
+    message,
+    
+   })
+
+})
