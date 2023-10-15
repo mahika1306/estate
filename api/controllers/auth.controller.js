@@ -9,7 +9,7 @@ export const signup=async (req,res,next)=>{
   try{
     await newUser.save();// saves inside the database
     // await is used because it takes time to save the data, so it stays in the event loop until the data is saved
-    res.status(201).json('User creaed successfully');
+    res.status(201).json('User created successfully');
   } catch(error){
     next(error);
   }
